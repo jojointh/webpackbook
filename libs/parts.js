@@ -38,3 +38,17 @@ exports.devServer = function(options) {
     ]
   }
 }
+
+exports.setupCSS = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css'],
+          include: paths
+        }
+      ]
+    }
+  };
+}
