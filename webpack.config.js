@@ -29,7 +29,8 @@ var config;
 // Detect how npm is run and branch based on that
 switch(process.env.npm_lifecycle_event) {
   case 'build':
-    config = merge(common,
+    config = merge(
+      common,
       {
         devtool: 'source-map'
       },
@@ -37,6 +38,10 @@ switch(process.env.npm_lifecycle_event) {
         'process.env.NODE_ENV',
         'production'
       ),
+      parts.extractBundle({
+        name: 'vendor',
+        entries: ['react']
+      }),
       parts.minify(),
       parts.setupCSS(PATHS.app)
     );
@@ -56,5 +61,4 @@ switch(process.env.npm_lifecycle_event) {
     );
 }
 
-module.exports = config;
 module.exports = validate(config);
