@@ -1,12 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
-}
+};
 
-module.exports = {
+const common = {
   entry: {
     app: PATHS.app
   },
@@ -16,7 +17,20 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack demo'
+      title: 'webpack demo'
     })
   ]
-};
+}
+
+var config;
+
+// Detect how npm is run and branch based on that
+switch(process.env.npm_lifecycle_event) {
+  case 'build':
+    config = merge(common, {});
+    break;
+  default:
+    config = merge(common, {});
+}
+
+module.exports = config;
