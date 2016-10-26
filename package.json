@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "webpack"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "devDependencies": {
     "html-webpack-plugin": "^2.24.0",
     "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^0.15.0",
     "webpack-validator": "^2.2.9"
   }
